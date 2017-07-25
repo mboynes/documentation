@@ -53,6 +53,12 @@ Because of the cloud-based nature of Pantheon's infrastructure, we cannot ensure
 
 See [the email documentation](/docs/email) for more details and suggestions.
 
+## Write Access on Environments
+
+For Dev environments in SFTP mode, the entire codebase is writable. However the platform is designed to keep only the codebase under version control.  This means that the only writable to the file system is `sites/default/files` for Drupal sites and `wp-content/uploads` for WordPress sites.
+
+Any modules for Drupal or plugins for WordPress that need to write to the codebase (and assume write access) need a symlink added so that they will instead write to the file system. For more information, read [Using Extensions That Assume Write Access](/docs/assuming-write-access/).
+
 ## Streaming Media
 
 Because Pantheon does not provide [transcoding](https://en.wikipedia.org/wiki/Transcoding#Re-encoding.2Frecoding), bandwidth-adaptive media delivery, or support for large files (see below), [streaming media](https://en.wikipedia.org/wiki/Streaming_media) is not possible directly from the platform.
@@ -143,7 +149,7 @@ See [Modules and Plugins with Known Issues](/docs/unsupported-modules-plugins) f
 
 ## Inactive Site Freezing
 
-Sandbox sites that are over a year old that have not had code commits or other Git activity for 6 months are "frozen". All requests to a frozen site will return a `530 Site Frozen` error code, and the site's Dashboard will be unavailable.
+Sandbox sites that are over four months old that have not had code commits or other Git activity for three months are "frozen". All requests to a frozen site will return a `530 Site Frozen` error code, and the site's Dashboard will be unavailable.
 
 You can reactivate a site with a single click. Simply visit the site's Dashboard and click **Unfreeze site**. Within a few minutes, the site will be ready for development again. If you experience any issues, a backup of the site is available and can be restored via the Site Dashboard.
 

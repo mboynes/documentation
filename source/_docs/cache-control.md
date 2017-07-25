@@ -15,14 +15,15 @@ You can use a variety of mechanisms to determine which responses from your Drupa
 
 <!-- Tab panes -->
 <div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="d8">
+  <div role="tabpanel" class="tab-pane active" id="d8" markdown="1">
   <br>
   <p><a href="https://www.drupal.org/developing/api/8/render/arrays/cacheability">Drupal 8's system of cacheability metadata</a> is much more advanced than the tools available in Drupal 7 or WordPress. Drupal builds HTML out of render arrays, which are specially formed PHP arrays. If one layer of a render array cannot be cached (if it's cache max age should be zero) that cacheability metadata can be set with: </p>
   <pre><code class="php hljs">
 // $build is a render array.
 $build['#cache']['max-age'] = 0;
   </code></pre>
-  Drupal 8 will "bubble up" this information so that if an small block on a page requires a cache max age of zero, the entire page will be uncacheable.
+  Drupal 8 will "bubble up" this information so that if any small block on a page requires a cache max age of zero, the entire page will be uncacheable.
+Currently [Cache Control Override](https://www.drupal.org/project/cache_control_override) module is required for this feature to behave correctly.
   </div>
   <div role="tabpanel" class="tab-pane" id="d7">
   <br>

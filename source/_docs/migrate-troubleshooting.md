@@ -97,6 +97,12 @@ Next, check [log files](https://pantheon.io/docs/logs/) to help identify and fix
 
 **Solution:** Ensure that the archive contains a valid MySQL database dump.
 
+### Could not import database from PHPMyAdmin
+
+**Cause:** PHPMyAdmin version 4.2 can create a database dump Drupal 8 is unable to import.
+
+**Solution:** This issue is documented on [Drupal.org](https://www.drupal.org/node/2496331). Edit the DB dump as described [here](https://www.drupal.org/node/2496331#comment-10029863).
+
 ### Multiple file directories found within the import archive. ###
 
 **Cause:** The migration tool found more than one potential location for files within the archive. This error also occurs if Drupal's private files directory is not placed within the public directory (`sites/default/files/private`).
@@ -136,7 +142,7 @@ If you'd like your existing Drupal site to get one-click updates from your [Cust
 
 ### What if I can't use drush on my existing Drupal site?
 
-As an alternative to `drush` you can use the [Backup and Migrate](/docs/drupal-export#create-archive-using-backup-and-migrate) module. Also see [manually create an archive](/docs/drupal-export#manually-create-archive).
+As an alternative to `drush` you can manually export and migrate. For details, see [Export an Existing Drupal Site](/docs/drupal-export).
 
 ### Are database table prefixes supported?
 
@@ -153,6 +159,7 @@ If multiple SQL files are present the import will fail. Only provide one `.sql` 
 If multiple `settings.php` files are present the import will fail. Pantheon does not need the `settings.php` file to import the site. To prevent import problems, it's best to remove `settings.php`.
 
 ## See Also
- * [Migrate Sites to Pantheon](/docs/migrate)
- * [Log Files on Pantheon](/docs/logs/)
- * [Using the Pantheon Workflow](/docs/pantheon-workflow)
+* <a href="https://pantheon.io/resources/quickstart-guide-migrating-wordpress-site" target="blank">The Quickstart Guide to Migrating a WordPress Site <span class="glyphicons glyphicons-new-window-alt"></span></a>
+* [Migrate Sites to Pantheon](/docs/migrate)
+* [Log Files on Pantheon](/docs/logs/)
+* [Using the Pantheon Workflow](/docs/pantheon-workflow)

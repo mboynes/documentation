@@ -28,7 +28,7 @@ Some advantages of redirecting via PHP instead of `.htaccess` include:
 
 <div class="alert alert-info" role="alert">
 <h4 class="info">Note</h4>
-<p>Automatic resolution of domains is not supported. For each domain that you want to resolve to Pantheon, add a hostname with a matching record to an environment on the <a href="/docs/domains#step-2-add-domains-to-the-site-environment" data-proofer-ignore> site's Dashboard</a>.</p>
+<p>Automatic resolution of domains is not supported. For each domain that you want to resolve to Pantheon, add a hostname with a matching record to an environment on the <a href="/docs/guides/launch/domains/" data-proofer-ignore> site's Dashboard</a>.</p>
 </div>
 
 ### Command Line Conditionals
@@ -43,9 +43,9 @@ All redirect logic run on Pantheon environments should include the `php_sapi_nam
 
 While it’s good for visitors and DNS to resolve both www and the domain itself, it's best practice to choose one or the other and redirect from www to non-www (or vice versa, your call). This optimizes SEO by avoiding duplicate content and prevents session strangeness, where a user can be logged in to one domain but logged out of other domains at the same time.
 
-<div class="panel panel-video" id="accordion">
-  <div class="panel-heading panel-video-heading">
-    <a class="accordion-toggle panel-video-title collapsed" data-toggle="collapse" data-parent="#accordion" data-proofer-ignore data-target="#redirects-video"><h3 class="panel-title panel-video-title" style="cursor:pointer;">Show me how </h3></a>
+<div class="panel panel-drop" id="accordion">
+  <div class="panel-heading panel-drop-heading">
+    <a class="accordion-toggle panel-drop-title collapsed" data-toggle="collapse" data-parent="#accordion" data-proofer-ignore data-target="#redirects-video"><h3 class="panel-title panel-drop-title" style="cursor:pointer;"><span style="line-height:.9" class="glyphicons glyphicons-facetime-video"></span> Watch: Standardize on a Common Domain</h3></a>
   </div>
   <div id="redirects-video" class="collapse">
     <script src="//fast.wistia.com/embed/medias/fof9qie645.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_fof9qie645 videoFoam=true" style="height:100%;width:100%">&nbsp;</div></div></div>
@@ -71,7 +71,7 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
 
 ### Redirect from www to the Bare Domain
 
-If you prefer to use the bare domain, use the following code block and run your DNS settings through a service that supports CNAME flattening. For details, see <a href="/docs/domains/#step-3-configure-your-dns" data-proofer-ignore>Domains and DNS</a>.
+If you prefer to use the bare domain, use the following code block and run your DNS settings through a service that supports CNAME flattening. For details, see <a href="/docs/guides/launch/domains/" data-proofer-ignore>Domains and DNS</a>.
 
 <div class="alert alert-info" role="alert">
 <h4 class="info">Note</h4>

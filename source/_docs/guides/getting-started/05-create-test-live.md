@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 subtitle: Create Test & Live
-guidepage: true
+getstarted: true
 anchorid: create-test-live
 generator: pagination
 layout: guide
@@ -10,18 +10,18 @@ pagination:
 use:
     - gettingstartedpages
 permalink: docs/guides/getting-started/create-test-live/
-nexturl: getting-started/clone-live-to-dev/
+nexturl: guides/getting-started/clone-live-to-dev/
 nextpage: Clone Live to Dev
-previousurl: getting-started/site-dashboard/
+previousurl: guides/getting-started/site-dashboard/
 previouspage: Site Dashboard
-editpath: 05-create-test-live.md
-image: getting-started-Largethumb
+editpath: getting-started/05-create-test-live.md
+image: launchGuide-twitterLarge
 ---
 In this lesson, we’re going to to create our Test site and our Live site, which we just learned about in the previous lesson.
 
 **Watch the video:**
 
-<div class="panel panel-video panel-guide">
+<div class="panel panel-drop panel-guide">
 <script src="//fast.wistia.com/embed/medias/hzbsff4k6c.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_hzbsff4k6c videoFoam=true" style="height:100%;width:100%">&nbsp;</div></div></div>
 </div>
 

@@ -94,12 +94,70 @@ Go back to your site's Dev tab in Pantheon, click the URL under "Development sit
 
 ## Troubleshooting
 
-### Git Connection is Slow
+### Authenticity & Fingerprint Prompts
+Initial connections from your local computer to a site's codebase on Pantheon after running `git` commands will prompt you to confirm the connection:
 
-Your SSH connection may be using a slow encryption protocol. Configuring your SSH client to use the `diffie-hellman-group1-sha1` protocol results in the fastest connections. For OS X/Linux, add the following to your SSH config (~/.ssh/config):
+```
+The authenticity of host '[codeserver.dev.UUID.drush.in]:2222 ([IP.ADDRESS]:2222)' can't be established.
+RSA key fingerprint is SHA256:yPEkh1Amd9WFBSP5syXD5rhUByTjaKBxQnlb5CahZZE.
+Are you sure you want to continue connecting (yes/no)?
+```
 
-    Host *.drush.in
-        KexAlgorithms diffie-hellman-group1-sha1
+You can safely type `yes` and press enter to add the server's SSH key fingerprint to your computer's `known_hosts` file. Additional connections to this specific Pantheon container will complete successfully without prompts. However, you will be prompted to confirm connections following a container migration, which is part of regular maintenance on the platform. See the following Pro Tip to automatically accept all Pantheon connections.  
+
+<div class="panel panel-drop panel-guide" id="accordion">
+
+<a class="accordion-toggle panel-drop-title collapsed" data-toggle="collapse" data-parent="#accordion" data-proofer-ignore data-target="#host-keys">
+<div class="panel-heading panel-drop-heading">
+<h3 class="panel-title panel-drop-title" style="cursor:pointer;"><span style="line-height:.9" class="glyphicons glyphicons-lightbulb"></span> Pro Tip: Trust All Pantheon Hosts</h3>
+</div>
+</a>
+
+<div id="host-keys" class="collapse">
+<div class="panel-inner" markdown="1">
+The key fingerprint is a representation of the public key, used by the remote server to identify itself. These public keys, along with private keys, form a **keypair** used by the [Diffie-Hellman key exchange](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) to encrypt communication between you and the server.
+
+On a standard server system, the server administrator would publish their host keys and fingerprints publicly, so clients could match them to the keys presented at these prompts. On Pantheon however, application servers are created and destroyed too rapidly to maintain a public key list.
+
+You can, however, easily tell your machine to automatically trust all Pantheon `*.drush.in` servers by disabling the `StrictHostKeyChecking` option in your SSH configuration file.
+
+<div class="alert alert-danger" role="alert">
+<h4 class="info">Warning</h4>
+<p markdown="1">
+Be aware that you're disabling a security feature, and trusting your DNS system to always point you to the right IP addresses.
+</p>
+</div>
+
+Open `~/.ssh/config` (or create a new file if one does not exist) and add the following lines:
+
+```
+Host *.drush.in
+    StrictHostKeyChecking no
+```
+
+Now, requests to any `*.drush.in` server address should automatically accept the server's SSH key fingerprint without prompting you.
+
+</div>
+</div>
+</div>
+
+### Checking Out Code using GUI Clients
+
+SourceTree and other Git GUI clients generally prompt for a Source URL using HTTP or HTTPS to the repository to check out the site code. Pantheon does not provide Git repository access over HTTP(s), and instead provides a "Git over SSH" URL. For example:
+
+    git clone ssh://codeserver.dev.xxx@codeserver.dev.xxx.drush.in:2222/~/repository.git my-site
+
+Some Git GUI clients, like SourceTree, do support the use of `ssh://` URLs to clone the code base.
+
+To configure this URL in SourceTree simply remove the `git clone` and the trailing space and 'my-site' name off the end of the command provided in the **Connection Info** section of your Pantheon Dashboard.
+
+* Source URL: `ssh://codeserver.dev.xxx@codeserver.dev.xxx.drush.in:2222/~/repository.git`
+* Destination Path: The local path where you want to clone the repository.
+* Name: Your site name.
+
+![SourceTree git Configuration](/docs/assets/images/sourcetree-config.png)
+
+Alternatively, you can simply clone the repository using the `git clone` and then use the "Add Existing Local Repository" option in SourceTree to point to the checked out directory.
 
 ## Additional Resources
 
@@ -117,4 +175,7 @@ For further learning, we recommend the following resources:
 - [GitKraken - Git GUI Client](https://www.gitkraken.com/)
 - [GitHub Desktop - Git GUI Client](https://desktop.github.com/)
 
-For Pantheon-specific Git questions, see the [Git FAQs](/docs/git-faq/).
+For Pantheon-specific Git questions, see the following:
+
+- [Git FAQs](/docs/git-faq/)
+- [Undo Git Commits](/docs/undo-commits/)

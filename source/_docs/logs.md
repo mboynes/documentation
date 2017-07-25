@@ -27,7 +27,7 @@ The server timezone and all log timestamps are in UTC (Coordinated Universal Tim
       <tr>
         <th>nginx-access.log</th>
         <td>60 days of logs</td>
-        <td>Webserver access log. Do not consider canonical, as this will be wiped if the application server is reset or rebuilt. See <a href="/docs/nginx-access-log">Parsing nginx Access Logs with GoAccess</a>.</td>
+        <td  markdown="1">Webserver access log. **Do not consider canonical**, as this will be wiped if the application server is reset or rebuilt. See <a href="/docs/nginx-access-log">Parsing nginx Access Logs with GoAccess</a>.</td>
       </tr>
       <tr>
         <th>nginx-error.log</th>
@@ -73,9 +73,9 @@ Rotated log files are archived within the `/logs` directory on application serve
 Logs are stored within application containers that house your site's codebase and files. [Add an SSH key](/docs/ssh-keys/) within your User Dashboard to enable passwordless access and avoid authentication prompts. Otherwise, provide your Pantheon Dashboard credentials when prompted.
 
 ## Downloading Logs
-<div class="panel panel-video" id="accordion">
-  <div class="panel-heading panel-video-heading">
-    <a class="accordion-toggle panel-video-title collapsed" data-toggle="collapse" data-parent="#accordion" data-proofer-ignore data-target="#logs-video"><h3 class="panel-title panel-video-title" style="cursor:pointer;">Show me how </h3></a>
+<div class="panel panel-drop" id="accordion">
+  <div class="panel-heading panel-drop-heading">
+    <a class="accordion-toggle panel-drop-title collapsed" data-toggle="collapse" data-parent="#accordion" data-proofer-ignore data-target="#logs-video"><h3 class="panel-title panel-drop-title" style="cursor:pointer;"><span style="line-height:.9" class="glyphicons glyphicons-facetime-video"></span> Watch: Download Appserver and Database Log Files</h3></a>
   </div>
   <div id="logs-video" class="collapse">
     <script src="//fast.wistia.com/embed/medias/hqqq24z2iv.jsonp" async></script><script src="//fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_hqqq24z2iv videoFoam=true" style="height:100%;width:100%">&nbsp;</div></div></div>
@@ -223,7 +223,7 @@ The best recommended practice is to find and resolve the problems. PHP notices, 
 
 ### How do I access logs in environments with multiple containers?
 
-Business and Elite plans have more than a single container in the Live and Test environments. In order to download the logs from each application container, use the following shell script:
+Live environments for Personal and Professinal sites on paid plans have one main and one failover container that can contain logs.  Business and Elite plans have more than one container in the Live *and* Test environments. In order to download the logs from each application container, use the following shell script:
 
 ```bash
 # Site UUID from Dashboard URL, eg 12345678-1234-1234-abcd-0123456789ab

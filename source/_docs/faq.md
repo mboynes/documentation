@@ -44,7 +44,7 @@ Direct SSH access is not supported, but you are able to directly interface with 
 
 ### How does Pantheon work with DNS?
 
-Pantheon can handle any domain name you point at it, however DNS configuration is still your responsibility. For more information, see [Domains](/docs/domains).
+Pantheon can handle any domain name you point at it, however DNS configuration is still your responsibility. For more information, see [Launch Essentials](/docs/guides/launch/domains/).
 
 ### What are the differences between the environments?
 
@@ -125,7 +125,7 @@ It’s possible to specify a site language given a particular domain or path. In
 
 Each of these configurations is possible with Drupal’s built-in language switching.
 
-You can associate multiple domains with a single site environment. See [adding a domain to a site environment](/docs/domains) for details.
+You can associate multiple domains with a single site environment. See [Launch Essentials](/docs/guides/launch/domains/) for details.
 
 ### Can I use PHP Sessions with WordPress?
 
@@ -140,6 +140,9 @@ Warning: session_start(): user session functions not defined
 You'll need the plugin. [More information on sessions](/docs/wordpress-sessions/).
 
 ## Caching and Performance
+
+### Can I use other CDNs with Pantheon?
+Yes. We recommend that you ensure that you are enforcing HTTPS only at the outer CDN and assuming HTTPS in the application.Check your CDN for how to redirect all traffic to HTTPS.
 
 ### What version of Apache Solr does Pantheon run?
 

@@ -14,7 +14,7 @@ Our tech includes NGINX, PHP, Redis, Varnish, Solr and Git&mdash;common tools in
 - [Using the Pantheon Workflow](/docs/pantheon-workflow/)
 - [All About Application Containers](/docs/application-containers/)
 - [Platform Considerations](/docs/platform-considerations/)
-- [Enable Secure HTTPS Communication](/docs/enable-https)
+- [HTTPS on Pantheon's Global CDN](/docs/https)
 
 ## Build
 - [Migrate Sites to Pantheon](/docs/migrate)
@@ -24,8 +24,7 @@ Our tech includes NGINX, PHP, Redis, Varnish, Solr and Git&mdash;common tools in
 - [Cron for WordPress](/docs/wordpress-cron) or [Cron for Drupal](/docs/drupal-cron)
 
 ## Launch
-- [Going Live](/docs/go-live)
-- [Domains and DNS](/docs/domains)
+- [Launch Essentials](/docs/guides/launch)
 
 ## Run
 - [Optimization for Pantheon and the Cloud](/docs/cloud-optimization)

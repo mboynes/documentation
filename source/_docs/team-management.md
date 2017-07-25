@@ -49,11 +49,18 @@ Within the Team modal of the Site Dashboard, the site owner can click **Make Own
 #### Paid Sites
 To change the owner of a paid site (e.g. Personal, Pro, Business), you'll need to update the billing information by clicking **Invite a business owner to pay for this site** within in the Settings page of the Site Dashboard. Enter the email address for the new site owner and select the applicable plan for the site. Once the new owner receives the invitation they will be directed to provide payment information, at which point they will assume ownership of the site.
 
-![Invite a business owner to pay for this site](/source/docs/assets/images/dashboard/payment-invite.png)<br />
+![Invite a business owner to pay for this site](/source/docs/assets/images/dashboard/payment-form-invite.png)<br />
 Enterprise Organizations can use the same process to assume ownership of a site;  however, Agency Partners do not have the ability to own sites directly.
 
 ### Pantheon Partners
 The site owner is the person who pays for the site. You'll need to update the payment method to change the owner.
+
+## Roles and Permissions
+Change Management is an [organization](/docs/organizations/) feature that enables role-based permissions for users in the organization. It is automatically enabled for all [Partner](https://pantheon.io/agencies/pantheon-for-agencies), [EDU](https://pantheon.io/edu) and [Enterprise](https://pantheon.io/pantheon-enterprise) Organizations.
+
+Sites that do not fit the above description will not be able to restrict access or assign specific user roles, such as **Administrator** or **Developer**.
+
+For details on this feature, see [Role-Based Permissions & Change Management](/docs/change-management).
 
 ## Add a Supporting Organization
 
@@ -71,7 +78,3 @@ One of the best things about Pantheon is the ability to collaborate with agencie
 
  ![Add a supporting organization button](/source/docs/assets/images/dashboard/multi_org1.png)
  ![Confirm supporting organization](/source/docs/assets/images/dashboard/multi_org2.png)
-
-## See Also
-[Role-Based Permissions & Change Management](/docs/change-management/)
-[Organizations](/docs/organizations/)

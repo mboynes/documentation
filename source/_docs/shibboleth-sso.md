@@ -66,7 +66,7 @@ Set up your SimpleSAMLphp `config.php` as follows:
 3. With the basic variables defined, set up base config:
 
         $config = array (
-          'baseurlpath' => 'https://'. $host .'/simplesaml/',
+          'baseurlpath' => 'https://'. $host .':443/simplesaml/', // SAML should always connect via 443
           'certdir' => 'cert/',
           'loggingdir' => 'log/',
           'datadir' => 'data/',
@@ -91,11 +91,16 @@ You can now visit the subdirectory `/simplesaml` on your development site and co
 
 Add the following lines to `settings.php` so that the Drupal module can locate SimpleSAMLphp:
 
+For Drupal 7 sites:
 ```php
-# Decode Pantheon Settings
-$ps = json_decode($_SERVER['PRESSFLOW_SETTINGS'], TRUE);
 # Provide universal absolute path to the installation.
-$conf['simplesamlphp_auth_installdir'] = '/srv/bindings/'. $ps['conf']['pantheon_binding'] .'/code/private/simplesamlphp-1.14.x';
+$conf['simplesamlphp_auth_installdir'] = $_ENV['HOME'] .'/code/private/simplesamlphp-1.14.x';
+```
+
+For Drupal 8 sites:
+```php
+# Provide universal absolute path to the installation.
+$settings['simplesamlphp_dir'] = $_ENV['HOME'] .'/code/private/simplesamlphp-1.14.x';
 ```
 
 You can now enable and configure the module. If SAML authentication fails because of a configuration error, look at the watchdog log to see why.

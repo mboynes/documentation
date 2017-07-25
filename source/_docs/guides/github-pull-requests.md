@@ -1,7 +1,7 @@
 ---
 title: Using GitHub Pull Requests with Composer and Drupal 8
 description: Use GitHub and Composer to manage modules and other dependencies for Drupal 8 sites on Pantheon.
-tags: [workflow]
+tags: [workflow, moreguides]
 categories: [drupal8]
 type: guide
 permalink: docs/guides/:basename/
@@ -12,41 +12,41 @@ contributors:
 
 This guide describes how to use GitHub and Circle CI with Composer to implement a collaborative, team-based Continuous Integration workflow using pull requests for a Drupal 8 site on Pantheon.
 
-<div class="row">
-  <div style="margin-bottom:30px;" class="col-md-4">
-    <div class="plugin-dir">
-      <div class="pantheon-official">
-        <div class="main-topic-info__plugin-image" style="background-image:url(/source/docs/assets/images/github-logo.svg)"></div>
-        <p>GitHub</p>
-      </div>
-      <div class="terminus-plugin">
+<div class="flex-panel-group">
+  <div class="flex-panel-item">
+    <div class="flex-panel-body">
+      <div class="flex-panel-title">
         <h3 class="plugin-title">GitHub</h3>
-          <p class="topic-info__description"><a href="https://github.org">GitHub</a> is an online service that provides cloud storage Git repositories that may be cloned and used locally, or edited directly through their web-based management interface. These features are very useful to teams collaborating on a project together.</p>
+        <div class="pantheon-official">
+          <img alt="GitHub Logo" src="/source/docs/assets/images/github-logo.svg" class="main-topic-info__plugin-image" style="max-width:40px;" >
+          <p class="pantheon-official">GitHub</p>
+        </div>
       </div>
+      <p class="topic-info__description"><a href="https://github.org">GitHub</a> is an online service that provides cloud storage Git repositories that may be cloned and used locally, or edited directly through their web-based management interface. These features are very useful to teams collaborating on a project together.</p>
     </div>
   </div>
-  <div style="margin-bottom:30px;" class="col-md-4">
-    <div class="plugin-dir">
-      <div class="pantheon-official">
-        <div class="main-topic-info__plugin-image" style="background-image:url(/source/docs/assets/images/circleci-logo.svg)"></div>
-        <p>CircleCI</p>
-      </div>
-      <div class="terminus-plugin">
+  <div class="flex-panel-item">
+    <div class="flex-panel-body">
+      <div class="flex-panel-title">
         <h3 class="plugin-title">CircleCI</h3>
-        <p class="topic-info__description"><a href="https://circleci.com">CircleCI</a> provides hosted services to run automated tests for a project, and GitHub provides an integration to run these tests to whenever a change is submitted. The process of testing each set of changed files prior to merging them into the main branch is called continuous integration.</p>
+        <div class="pantheon-official">
+          <img alt="CircleCI Logo" src="/source/docs/assets/images/circleci-logo.svg" class="main-topic-info__plugin-image" style="max-width:40px;>
+          <p class="pantheon-official">CircleCI</p>
+        </div>
       </div>
+      <p class="topic-info__description"><a href="https://circleci.com">CircleCI</a> provides hosted services to run automated tests for a project, and GitHub provides an integration to run these tests to whenever a change is submitted. The process of testing each set of changed files prior to merging them into the main branch is called continuous integration.</p>
     </div>
   </div>
-  <div style="margin-bottom:30px;" class="col-md-4">
-  <div class="plugin-dir">
-      <div class="pantheon-official">
-        <div class="main-topic-info__plugin-image" style="background-image:url(/source/docs/assets/images/composer-logo.svg)"></div>
-        <p>Composer</p>
+  <div class="flex-panel-item">
+    <div class="flex-panel-body">
+      <div class="flex-panel-title">
+        <h3 class="plugin-title">Composer</h3>
+        <div class="pantheon-official">
+          <img alt="Composer Logo" src="/source/docs/assets/images/composer-logo.svg" style="max-width:40px; class="main-topic-info__plugin-image" >
+          <p class="pantheon-official">GitHub</p>
+        </div>
       </div>
-      <div class="terminus-plugin">
-          <h3 class="plugin-title">Composer</h3>
-          <p class="topic-info__description"><a href="https://getcomposer.org">Composer</a> is a PHP dependency manager that provides an alternative, more modern way to manage the external code used by a project. For example, Composer may be used to install the modules and themes used by a Drupal site.</p>
-      </div>
+      <p class="topic-info__description"><a href="https://getcomposer.org">Composer</a> is a PHP dependency manager that provides an alternative, more modern way to manage the external code used by a project. For example, Composer may be used to install the modules and themes used by a Drupal site.</p>
     </div>
   </div>
 </div>
@@ -79,6 +79,7 @@ Generally, use of Composer is optional; however, some Drupal modules, such as th
 
     <br>
 2.  Generate a [machine token](/docs/machine-tokens/) and [log in with Terminus](/docs/terminus/install/#authenticate).
+3.  [Authorize CircleCI on Github](https://github.com/login/oauth/authorize?client_id=78a2ba87f071c28e65bb)
 
 ## Set Up a New Project
 
@@ -291,7 +292,7 @@ A more convenient contrib module called [Simple block](https://www.drupal.org/pr
 
 ![Simple blocks](/source/docs/assets/images/pr-workflow/simple-blocks.png)
 
-The Simple block creation editor is identical to the custom block editor; however, blocks created with the simple block editor have both their content and configuration stored in the Drupal configuration system. It is therefore very easy to create custom blocks in a development environment, and then deploy them to test and live. 
+The Simple block creation editor is identical to the custom block editor; however, blocks created with the simple block editor have both their content and configuration stored in the Drupal configuration system. It is therefore very easy to create custom blocks in a development environment, and then deploy them to test and live.
 
 Sites created from the [Example Drops-8 Composer](https://github.com/pantheon-systems/example-drops-8-composer) project disable the core Custom Block module by default, and enable the contrib Simple Block module in its place.
 

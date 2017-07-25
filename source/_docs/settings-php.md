@@ -7,7 +7,7 @@ categories: []
 ---
 The Drupal system configuration in code is set in the `sites/default/settings.php` file.
 
-Drupal 8 sites on Pantheon run an unmodified version of core, bundled with a custom `settings.php` file that includes the necessary `settings.pantheon.inc`. If the stock `settings.php` file is used in place of the bundled file, the site will stop working on Pantheon.
+Drupal 8 sites on Pantheon run an unmodified version of core, bundled with a custom `settings.php` file that includes the necessary `settings.pantheon.php`. If the stock `settings.php` file is used in place of the bundled file, the site will stop working on Pantheon.
 
 For Drupal 6/7, Pantheon uses a variant of Pressflow Drupal to allow the server to automatically specify configuration settings, such as the database configuration without editing `settings.php`. Permissions are handled automatically by Pantheon, so you can customize `settings.php` like any other site code.
 
@@ -123,7 +123,7 @@ Depending on your use case, there are three possibilities:
 
  - For actions that should take place on every environment, such as Redis caching, use the constant `PANTHEON_ENVIRONMENT`. Again, it will contain Dev, Test, or Live. See our [Redis](/docs/redis) guide for examples for [Drupal 8](/docs/redis#drupal-8-sites) or [Drupal 7](/docs/redis#drupal-7-sites).
 
- - For Actions that require access to protected services like Redis or the site database, you can use the `$_ENV` superglobal. Please review our guide on [Reading Pantheon Environment Configuration](/docs/read-environment-config/) for more information, or see our [Redis](/docs/redis) guide for examples for [Drupal 8](/docs/redis#drupal-8-sites) or [Drupal 7](/docs/redis#drupal-7-sites) sites. 
+ - For Actions that require access to protected services like Redis or the site database, you can use the `$_ENV` superglobal. Please review our guide on [Reading Pantheon Environment Configuration](/docs/read-environment-config/) for more information, or see our [Redis](/docs/redis) guide for examples for [Drupal 8](/docs/redis#drupal-8-sites) or [Drupal 7](/docs/redis#drupal-7-sites) sites.
 
 #### Why does Drupal report that `settings.php` is not protected? I can't change the permissions on `settings.php`.
 
@@ -168,11 +168,11 @@ You can view examples at the [pantheon-settings-examples repo](https://github.co
 
 #### Are table prefixes supported?
 
-For information about table prefixes on Pantheon, see [Export an Existing Drupal Site](/docs/drupal-export#export-the-database).
+For information about table prefixes on Pantheon, see [Export an Existing Drupal Site](/docs/drupal-export#create-database-archive).
 
 #### Why is the Status tab showing that my configuration file is not protected and that I need to create a settings.php file?
 
-Drupal doesn’t ship with a `settings.php` in place; as the error suggests, you should make a copy of the `default.settings.php` and rename it `settings.php`. Once you have created a `settings.php` file, the `settings.php` area of the report should change to green.
+Drupal doesn't ship with a `settings.php` in place; as the error suggests, you should make a copy of the `default.settings.php` and rename it `settings.php`. Once you have created a `settings.php` file, the `settings.php` area of the report should change to green.
 
 #### Can I edit settings.pantheon.php?
 No; `settings.pantheon.php` is for Pantheon's use only and you should only modify the `settings.php` file. The `settings.pantheon.php` file may change in future updates, and modifying it would cause conflicts.
@@ -193,4 +193,3 @@ Could not find a Drupal settings.php file at ./sites/default/settings.php
 ```
 
 To resolve, add a default or empty `sites/default/settings.php` to your site's code.
-

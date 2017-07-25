@@ -63,6 +63,7 @@ For detailed information, see [Installing Redis on WordPress](/docs/wordpress-re
       $settings['redis.connection']['password']  = $_ENV['CACHE_PASSWORD'];
 
       $settings['cache']['default'] = 'cache.backend.redis'; // Use Redis as the default cache.
+      $settings['cache_prefix']['default'] = 'pantheon-redis'; 
 
       // Always set the fast backend for bootstrap, discover and config, otherwise this gets lost when redis is enabled.
       $settings['cache']['bins']['bootstrap'] = 'cache.backend.chainedfast';
@@ -111,8 +112,6 @@ For detailed information, see [Installing Redis on WordPress](/docs/wordpress-re
 
         }
 
-    <div class="alert alert-info">
-    <h4 class="info">Note</h4><p>Distributions may vary in their directory structure. You will need to check the path at which the Redis module resides and change any paths in the snippet above to match your path.</p></div>
 
 7. Enable the module via `admin/build/modules`. This is necessary for cache clearing to work in all cases.
 
@@ -239,7 +238,7 @@ The best and easiest way to update your core is by using Pantheon administration
 
 ### Fatal Error: require\_once()
 
-Distributions may vary in their directory structure. You will need to check the path at which the Redis module resides and change any paths in the example code snippet to match your path to the Redis module. The error would look something like this:
+This is likely due to some variance in your site's directory structure. You will need to check the path at which the Redis module resides and change any paths in the example code snippet to match your path to the Redis module. The error would look something like this:
 ```bash
 Fatal error: require_once(): Failed opening required
 '/srv/bindings/xxxxxxxxx/code/sites/all/modules/redis/redis.autoload.inc'
@@ -312,4 +311,3 @@ sftp> ls -la logs/
 #### I restored my site (or imported a database backup) and now my site won't come back.
 
 When you replace the database with one that doesn't match the redis cache, it can cause database errors on the site, and you may be unable to clear the cache via the dashboard. To resolve the issue, [flush your redis cache from the command line](#clear-cache).
-

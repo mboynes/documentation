@@ -24,7 +24,7 @@ This operation writes the archive to Pantheon's filesystem in a web accessible l
 
 <div class="alert alert-danger" role="alert">
 <h4 class="info">Warning</h4>
-<p markdown="1">We reccomend using a random hash for the archive filename for security. Archive dumps contain sensitive information, so they should not be exposed using guessable filename patterns (like `BACKUP` or recent dates). We also advise prompt removal of archive files once you've completed the migration.</p>
+<p markdown="1">We recommend using a random hash for the archive filename for security. Archive dumps contain sensitive information, so they should not be exposed using guessable filename patterns (like `BACKUP` or recent dates). We also advise prompt removal of archive files once you've completed the migration.</p>
 </div>
 
 Click **Continue Migration** and follow all remaining instructions within the guided migration process.
@@ -43,7 +43,7 @@ If your database and code compressed are less than 256MB you can exclude the fil
 
 1. Use [Terminus](/docs/terminus) and the `--tar-options` flag:
 
-        terminus drush <site>.<env> ard --tar-options="--exclude=code/sites/default/files" --destination=code/sites/default/files/<RANDOM_HASH>.tgz
+        terminus drush <site>.<env> -- ard --tar-options="--exclude=code/sites/default/files" --destination=code/sites/default/files/<RANDOM_HASH>.tgz
 
 2. Click **Continue Migration**.
 3. Provide the web accessible URL for your site archive (e.g. `https://env-site-name.pantheonsite.io/sites/default/files/<RANDOM_HASH>.tgz`) and select **Import Archive**.
@@ -64,5 +64,6 @@ If your database and code compressed are less than 256MB you can exclude the fil
 Go the to files directory of your existing site and check if the site archive was generated successfully. Visiting the archive link with a browser should download the files automatically. You may need to run the `drush ard` command from [above](#drupal) again if you can't find the site archive.
 
 ## See Also
+- <a href="https://pantheon.io/resources/quickstart-guide-migrating-wordpress-site" target="blank">The Quickstart Guide to Migrating a WordPress Site <span class="glyphicons glyphicons-new-window-alt"></span></a>
 - [Migrate Sites to Pantheon: Manual Method](/docs/migrate-manual)
 - [Migrate Sites to Pantheon: Troubleshooting](/docs/migrate-troubleshooting)

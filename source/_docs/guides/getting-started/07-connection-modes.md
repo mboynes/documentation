@@ -1,7 +1,7 @@
 ---
 title: Getting Started
 subtitle: Connection Modes
-guidepage: true
+getstarted: true
 anchorid: connection-modes
 generator: pagination
 layout: guide
@@ -10,12 +10,12 @@ pagination:
 use:
     - gettingstartedpages
 permalink: docs/guides/getting-started/connection-modes/
-nexturl: getting-started/onserver-dev-part1/
+nexturl: guides/getting-started/onserver-dev-part1/
 nextpage: On-Server Dev, Part 1
-previousurl: getting-started/clone-live-to-dev/
+previousurl: guides/getting-started/clone-live-to-dev/
 previouspage: Clone Live to Dev
-editpath: 07-connection-modes.md
-image: getting-started-Largethumb
+editpath: getting-started/07-connection-modes.md
+image: launchGuide-twitterLarge
 ---
 
 In this lesson, we’ll learn how to connect to your Dev environment and change code.
@@ -27,13 +27,13 @@ In this lesson, we’ll learn how to connect to your Dev environment and change 
     <p>Dev is the only environment on Pantheon where you can add or change code, so it’s the only place you can access and change your Connection Mode.
     </p></div>
 
-On Pantheon, you can connect and work via [Git](https://git-scm.com/), or you can connect and work via SFTP.
+    On Pantheon, you can connect and work via <a href="https://git-scm.com/">Git <span class="glyphicons glyphicons-new-window-alt"></span></a>, or you can connect and work via SFTP.
 
 ##Git Connection Mode
 
 You can develop locally with Git Connection Mode. Git is the version control tool at the heart of the Pantheon workflow. If you're a developer who prefers local development, it's an efficient way to interact with our platform: develop locally, commit, and push code to your Dev environment.
 
-For more information, please see our [Local Development](/docs/local-development/) documentation.
+For more information, please see our <a href="/docs/local-development/">Local Development <span class="glyphicons glyphicons-new-window-alt"></span></a> documentation.
 
 ##SFTP Connection Mode
 

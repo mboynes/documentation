@@ -6,13 +6,14 @@ categories: []
 ---
 In some cases, working via Git is not the best option. You may not like local development, or you may want to show work to a remote collaborator (or client) immediately, or need to debug a specific problem that only occurs on the Pantheon platform.
 
-SFTP mode allows you to develop directly on Pantheon and can be a major time-saver. If you want to [use your website framework's built-in update systems](/docs/more-sftp/) (e.g. the <code>apps.module</code> in Drupal, or the plugin/theme manager in WordPress), enable SFTP first.
+SFTP mode allows you to develop directly on Pantheon and can be a major time-saver. If you want to use the WordPress Dashboard and Drupal Admin Interface (e.g. the <code>apps.module</code> in Drupal, or the plugin/theme manager in WordPress), enable SFTP first. For details, see [Working in the WordPress Dashboard and Drupal Admin Interface](/docs/cms-admin/).
 
 <div class="alert alert-danger" role="alert">
   <h4 class="info">SFTP Mode Considerations</h4>
   <h5>Commit frequently and keep in mind:</h5>
   <ul>
     <li>SFTP changes to code that have not been committed will <strong> not be saved in backups and not included in deployments</strong> as they are not part of your code repository yet.</li>
+    <li>Changing your site's connection mode from SFTP to Git will discard all uncommitted file changes. If you want to keep work in progress, commit before toggling the connection mode.</li>
     <li>The connection information will change from time to time due to server upgrades, endpoint migrations, etc. You will need to check this within the Dashboard periodically or when you find that you can’t connect.</li>
     <li>Containers are migrated as a regular part of maintenance.  This can delete uncommitted changes.</li>
     <li>You won't be able to save anything that's being excluded from version control via <code>.gitignore</code>.</li>
@@ -50,16 +51,30 @@ Your connection data is as follows:
 It is possible to connect to an environment via SFTP by using the terminal. The command is easily accessible from the Connection Information widget for the environment you are on.
 
 There is also a one-click option so you can connect with a GUI client. The main directory listing includes Pantheon, logs, environment data and configuration. Your website is in the `code` directory. For instance, in Mac OS Cyberduck:
- ![Cyberduck Example](/source/docs/assets/images/cyberduck-example.png)<br />
+
+![Cyberduck Example](/source/docs/assets/images/cyberduck-example.png)
+
 Get the instructions for other [SFTP clients](/docs/sftp#sftp-clients).
 
 
 ## Authenticating
-Follow development best practice workflows by [authenticating via SSH key for password-less access](/docs/ssh-keys). Alternatively, you may use your Pantheon Dashboard password when prompted, however larger agencies with multiple developers who login frequently may cause access issues across the organization. To avoid potential authentication failures, we strongly recommend using SSH keys. For details, see <a href="/docs/organization-faq#why-do-login-attempts-fail-for-all-users-across-my-organization-simultaneously?" data-proofer-ignore>Pantheon Organizations FAQs</a>.
+
+### SSH Keys
+To take full advantage of Pantheon, you should load your public SSH key into your account. SSH keys are a best practice for authentication, allowing you more security than a simple password. You will only need to do this once, no matter how many sites you work on. For more details, see [Generate and Add SSH Keys](/docs/ssh-keys/).
+
+### Dashboard Credentials
+Alternatively, you may use your Pantheon Dashboard password when prompted.  
+
+<div class="alert alert-info">
+<h4 class="info">Note</h4>
+<p markdown="1">If you login via social login (Connect with Google) or Single-Sign On (SSO) and you'd like to authenticate using a password, logout and visit [https://dashboard.pantheon.io/reset-password](https://dashboard.pantheon.io/reset-password) to add a password to your account.</p>
+</div>
+
+Larger agencies with multiple developers using password authentication who login frequently may see access issues across the organization. To avoid potential authentication failures, we strongly recommend using SSH keys. For details, see <a href="/docs/organization-faq#why-do-login-attempts-fail-for-all-users-across-my-organization-simultaneously?" data-proofer-ignore>Pantheon Organizations FAQs</a>.
 
 ## Committing SFTP Changes
 
-Even though you are unable to use Git to push remotely with SFTP mode enabled, you still need to commit your changes to save them, or push them to Test/Live. **Commit early and commit often**.
+Even though you are unable to use Git to push remotely with SFTP mode enabled, you still need to commit your changes to save them, or push them to Test/Live. **Commit early and commit often**. Large sets of code changes taking longer than two minutes to commit may result in failure due to timeouts. In those cases, temporarily remove some of your code changes (new modules or plugins), then try again.
 
 After you have made a change to your code, you will see a message that appears below the comment box to let you know you have some changes that are not in your repository. Clicking the notification message expands the listing of the pending changes.
 
@@ -67,11 +82,18 @@ Write a helpful commit message to go with your changes. This will make maintaini
 
 Once your message is ready, click **Commit**.
 
-
 <div class="alert alert-info" role="alert">
 <h4 class="info">Note</h4>
 <p>Your Dashboard tracks all changes made within your codebase. File change notifications will not include changes in the content files directory (e.g. <code>wp-content/uploads</code> or <code>sites/default/files/</code>) since these are not tracked in version control.</p>
 </div>
+
+## Discard & Abandon SFTP Changes
+
+Toggle the **Connection Mode** from **SFTP** to **Git** to *permanently* discard all SFTP changes that have not been committed, such as the 119 file changes shown here:
+
+![SFTP changes ready to commit](/source/docs/assets/images/dashboard/sftp-enabled.png)
+
+This can be useful when you have many changes you wish to undo or if it would otherwise be difficult to manually revert all the changes. Toggle back to **SFTP** mode when you're ready to resume SFTP development.
 
 ## SFTP Clients
 
@@ -85,7 +107,7 @@ SFTP mode works with any standards-compliant SFTP client, including many GUI too
 
 ### I can't connect via SFTP to the site.
 
-Make sure your site has not [spun down after being idle](/docs/application-containers/#idle-containers). Simply visit the site in your web browser and let it fully load then try connecting again.
+Make sure your site has not [spun down after being idle](/docs/application-containers/#idle-containers). Visit the site in your web browser and let it fully load then try connecting again.
 
 If your site is not idle and your [SFTP settings are correct](/docs/sftp/#sftp-connection-information) (including SFTP mode and port `2222`) you may be on a network that restricts what outbound ports you can access. An example may be an office or public wifi that only allows web traffic on port `80` (HTTPS)  and `443` (HTTPS).
 
@@ -97,6 +119,9 @@ If you **cannot** access that web page then your network or firewall is likely p
 
 If you **can** access that web page on port `2222` then your issue does not appear to be network or firewall related.  Be sure to double-check or re-enter your [SFTP settings](/docs/sftp/#sftp-connection-information), including SFTP mode and port `2222`. Contact Pantheon Support if you still have trouble.
 
+### I registered my Pantheon account via Google. How do I connect to SFTP?
+We recommend [adding an SSH Key](/docs/ssh-keys/), which allows more security than a simple password. If you've registered via social login (Connect with Google) and you'd still like to add a password to your account, logout and visit [https://dashboard.pantheon.io/reset-password](https://dashboard.pantheon.io/reset-password)
+
 ### I can't write to my codebase on Test or Live.
 
 This is by design. Please see [Using the Pantheon Workflow
@@ -106,8 +131,10 @@ This is by design. Please see [Using the Pantheon Workflow
 ### SFTP changes do not show up in the Site Dashboard.
 Uncommitted SFTP changes may not be recognized by the Dev environment when the Site Dashboard is open in multiple tabs or windows. Close all windows and tabs then access the Site Dashboard in a single tab to resolve.
 
-### My SFTP client takes a long time to connect.
+### How do I find my site's Binding path?
+You should not manually set the "Remote Path" in your SFTP client's settings. Instead, leave the Remote Path blank and you will automatically be redirected to the proper directory when logging in.
 
+### My SFTP client takes a long time to connect.
 Your SSH connection may be using a slow encryption protocol. Configuring your SSH client to use the `diffie-hellman-group1-sha1` protocol will result in the fastest connections. For OSX/Linux, add the following to your ssh config (~/.ssh/config):
 
     Host *.drush.in
@@ -172,5 +199,3 @@ Run the address through [IP WHOIS Lookup](https://www.whatismyip.com/ip-whois-lo
 
 Unfortunately, no permanent solution has been found aside from changing Internet Service Providers. In some cases, you may be able troubleshoot the issue with your ISP or connect using a VPN.
 
-### I registered my Pantheon account via Google. How do I connect to SFTP?
-We recommend [adding an SSH Key](/docs/ssh-keys/), which allows more security than a simple password. If you've registered via social login (Connect with Google) and you'd still like to add a password to your account, logout and visit [https://dashboard.pantheon.io/reset-password](https://dashboard.pantheon.io/reset-password)
