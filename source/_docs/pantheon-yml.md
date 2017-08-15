@@ -4,9 +4,9 @@ description: Learn how to manage advanced site configuration
 tags: [pantheonyml, infrastructure]
 categories: []
 ---
-Hook into platform workflows and manage advanced site configuration via the `pantheon.yml' file. Add it to the root of your site's codebase, and settings are deployed along with the rest of your code, so you can test before going live. 
+Hook into platform workflows and manage advanced site configuration via the `pantheon.yml' file. Add it to the root of your site's codebase, and deploy it along with the rest of your code, so you can test before deploying live. 
 
-For reference implementations see  [example.pantheon.yml](https://github.com/pantheon-systems/quicksilver-examples/blob/master/example.pantheon.yml) and [Quicksilver Example Scripts](https://github.com/pantheon-systems/quicksilver-examples). Use
+For reference implementations see  [example.pantheon.yml](https://github.com/pantheon-systems/quicksilver-examples/blob/master/example.pantheon.yml) and [Quicksilver Example Scripts](https://github.com/pantheon-systems/quicksilver-examples). 
 
 ## Advanced Site Configuration
 
