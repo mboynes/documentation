@@ -4,7 +4,7 @@ description: Understand how to use Redis as a caching mechanism for your Pantheo
 tags: [cacheapp, addons]
 categories: []
 ---
-Redis is an open-source, networked, in-memory, key-value data store that can be used as a drop-in caching backend for your Drupal or WordPress website.
+Redis is an open-source, networked, in-memory, key-value data store that can be used as a drop-in caching backend for your Drupal or WordPress website. This doc covers Drupal, but you can refer to [Installing Redis on WordPress](/docs/wordpress-redis/) for your WordPress sites.
 
 ## Benefits of Redis
 
